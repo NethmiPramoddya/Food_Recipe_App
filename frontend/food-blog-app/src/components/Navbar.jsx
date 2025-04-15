@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from './Modal'
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const checkLoging = () =>{
+    setIsOpen(true)
+  }
   return (
     <>
     <header>
@@ -9,9 +15,10 @@ function Navbar() {
             <li>Home</li>
             <li>Recipe</li>
             <li>Favourits</li>
-            <li>Login</li>
+            <li onClick={checkLoging}>Login</li>
         </ul>
     </header>
+    {(isOpen) && <Modal onClose ={() => setIsOpen(false)}/>}
     </>
   )
 }
